@@ -13,7 +13,7 @@ TEST_CASE("Test for encoder interface")
 TEST_CASE("Test for getHistogram function")
 {	
 	Encoder encode;
-	map<char,int> test;
+	multimap<int,char> test;
 	
 	test = encode.getHistogram();
 	
@@ -27,7 +27,7 @@ TEST_CASE("Test if create histogram function fills a map")
 	Encoder encode;
 	fin.open("test.txt");
 	
-	map<char,int> test;
+	multimap<int,char> test;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -45,16 +45,15 @@ TEST_CASE("Test if create histogram function fills correct values for a letter o
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	multimap<int,char> compare;
+	multimap<int,char> test;
 	
-	
-	compare['1']=1;
-	compare['2']=1;
-	compare['3']=1;
-	compare['4']=1;
-	compare[10] = 1;
-	
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,10));
+	compare.insert( make_pair(1,'1'));
+	compare.insert( make_pair(1,'2'));
+	compare.insert( make_pair(1,'3'));
+	compare.insert( make_pair(1,'4'));
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -72,15 +71,16 @@ TEST_CASE("Test if create histogram handles spaces")
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	multimap<int,char> compare;
+	multimap<int,char> test;
 	
-	compare[' ']=1;
-	compare['1']=1;
-	compare['2']=1;
-	compare['3']=1;
-	compare['4']=1;
-	compare[10] = 1;
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,10));
+	compare.insert( make_pair(1,' '));
+	compare.insert( make_pair(1,'1'));
+	compare.insert( make_pair(1,'2'));
+	compare.insert( make_pair(1,'3'));
+	compare.insert( make_pair(1,'4'));
 
 	
 	encode.createHistogram(fin);
@@ -89,3 +89,116 @@ TEST_CASE("Test if create histogram handles spaces")
 	
 	REQUIRE(compare == test);
 }
+
+
+TEST_CASE("Test if create histogram handles multiple characters")
+{	
+	ifstream fin;
+	Encoder encode;
+	fin.open("test3.txt");
+	
+	if(!fin)
+		return;
+	
+	multimap<int,char> compare;
+	multimap<int,char> test;
+	
+	
+	
+	
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,10));
+	compare.insert( make_pair(1,'5'));
+	compare.insert( make_pair(2,'4'));
+	compare.insert( make_pair(3,'3'));
+	compare.insert( make_pair(4,'2'));
+	compare.insert( make_pair(5,'1'));
+	compare.insert( make_pair(14,' '));
+
+	encode.createHistogram(fin);
+	test = encode.getHistogram();
+	
+	
+	REQUIRE(compare == test);
+}
+
+TEST_CASE("Test if create histogram handles multiple characters with new lines")
+{	
+	ifstream fin;
+	Encoder encode;
+	fin.open("test4.txt");
+
+	if(!fin)
+		return;
+	
+	multimap<int,char> compare;
+	multimap<int,char> test;
+	
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,'1'));
+	compare.insert( make_pair(1,'2'));
+	compare.insert( make_pair(1,'3'));
+	compare.insert( make_pair(1,'4'));
+	compare.insert( make_pair(4,10));
+	
+	
+	
+	encode.createHistogram(fin);
+	test = encode.getHistogram();
+	
+		
+	REQUIRE(compare == test);
+}
+
+TEST_CASE("Test if create histogram handles multiple characters and capital letters")
+{	
+	ifstream fin;
+	Encoder encode;
+	fin.open("test5.txt");
+
+	if(!fin)
+		return;
+	
+	multimap<int,char> compare;
+	multimap<int,char> test;
+	
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,10));
+	compare.insert( make_pair(1,'A'));
+	compare.insert( make_pair(1,'a'));
+	compare.insert( make_pair(1,'b'));
+	
+	
+	encode.createHistogram(fin);
+	test = encode.getHistogram();
+	
+	REQUIRE(compare == test);
+}
+
+TEST_CASE("Test if create histogram handles multiple characters and capital letters 2")
+{	
+	ifstream fin;
+	Encoder encode;
+	fin.open("test6.txt");
+
+	if(!fin)
+		return;
+	
+	multimap<int,char> compare;
+	multimap<int,char> test;
+	
+	compare.insert( make_pair(1,-1));
+	compare.insert( make_pair(1,10));
+	compare.insert( make_pair(4,'A'));
+	compare.insert( make_pair(25,'a'));
+
+	
+	
+	encode.createHistogram(fin);
+	test = encode.getHistogram();
+	
+	REQUIRE(compare == test);
+}
+
+
+

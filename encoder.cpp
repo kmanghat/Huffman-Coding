@@ -8,18 +8,22 @@ void Encoder::createHistogram(ifstream &fin)
 	map<char,int>::iterator it;
 
 		
-	while(fin>>input)
+	while(!fin.eof())
 	{
-		it = histogram.find(input);
+		input = fin.get();
 		
-		if(it == histogram.end())
+		if(input != -1)
 		{
-			histogram.insert(pair<char,int>(input,1));
-		}
-		else
-		{
-			histogram[it->first]++;
-				
+			it = histogram.find(input);
+		
+			if(it == histogram.end())
+			{
+				histogram.insert(pair<char,int>(input,1));
+			}
+			else
+			{
+				histogram[it->first]++;
+			}
 		}
 	}
 }

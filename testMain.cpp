@@ -192,8 +192,6 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 	compare.insert( make_pair(4,'A'));
 	compare.insert( make_pair(25,'a'));
 
-	
-	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
 	

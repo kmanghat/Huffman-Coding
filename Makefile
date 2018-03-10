@@ -1,4 +1,4 @@
-SOURCE = testMain.cpp encoder.cpp
+SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp
 OBJS = $(SOURCE:.cpp=.o)
 
 #GNU C/C++ Compiler
@@ -40,7 +40,6 @@ help:
 
 -include $(SOURCE:.cpp=.d)
 
-%.d: %.cpp
-	@set -e; /usr/bin/rm -rf $@;$(GCC) -MM $< $(CXXFLAGS) > $@
+
 
 

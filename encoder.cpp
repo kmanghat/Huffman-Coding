@@ -25,15 +25,8 @@ void Encoder::createHistogram(ifstream &fin)
 	}
 }
 
-multimap<int,char> Encoder:: getHistogram()
+map<char,int> Encoder:: getHistogram()
 {
-	multimap<int,char> orderedHistogram;
-	map<char,int>::iterator it;
-	
-	//returns a map with increasing order of frequency of occuring characters
-	for(it = histogram.begin(); it != histogram.end(); it++)
-		orderedHistogram.insert(make_pair(it->second,it->first));
-		
-	return orderedHistogram;
+	return histogram;
 }
 

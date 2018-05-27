@@ -1,25 +1,18 @@
 #include "huffmanTree.h"
 
-huffmanTree::huffmanTree(multimap<int,char>histogram)
+huffmanTree::huffmanTree(map<char,int>histogram)
 {
-	multimap<int,char>::iterator it;
+	map<char,int>::iterator it;
 	
 	for(it = histogram.begin(); it != histogram.end(); it++)
 	{
-		minHeap.push(new huffmanNode(it->second,it->first));
+		minHeap.push(new huffmanNode(it->first,it->second,false));
 	}
 	
-	while(!minHeap.empty())
-	{
-		cout<<minHeap.top()->frequency<<" "<<minHeap.top()->data<<endl;
-		minHeap.pop();
-	}
 }
 
 void huffmanTree::buildHuffmanTree()
-{
-	struct huffmanNode *left,*right,*top;
-	
+{	
 	while(minHeap.size() != 1)
 	{
 		left = minHeap.top();
@@ -28,12 +21,37 @@ void huffmanTree::buildHuffmanTree()
 		right = minHeap.top();
 		minHeap.pop();
 		
-		top = new huffmanNode('*',left->frequency + right->frequency);
+		top = new huffmanNode(' ',left->frequency + right->frequency,true);
 		
 		top->left = left;
 		top->right = right;
 		
 		minHeap.push(top);
 	}
-
+	
 }
+
+huffmanNode* huffmanTree::getRoot()
+{
+	return minHeap.top();
+}
+
+
+void huffmanTree::printNodes(huffmanNode *root)
+{
+	if(root == NULL)
+		return;	
+	
+	cout<< root->data<<" "<<root->frequency<<" ";
+	
+	if(root->isInternalNode == true)
+		cout<<"Internal node";
+		
+	cout<<endl;
+	printNodes(root->left);
+	
+	printNodes(root->right);
+	
+	
+}
+

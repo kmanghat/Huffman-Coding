@@ -9,7 +9,7 @@ class Encoder
 	public:
 		Encoder();
 		void createHistogram(ifstream &fin);
-		multimap<int,char> getHistogram();
+		map<char,int> getHistogram();
 		
 		
 	private:

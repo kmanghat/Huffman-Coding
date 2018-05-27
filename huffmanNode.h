@@ -9,17 +9,19 @@ struct huffmanNode
 {
 	int frequency;
 	char data;
+	bool isInternalNode;
 	
 	struct huffmanNode *left;
 	struct huffmanNode *right;
 	
-	huffmanNode(char data,int frequency)
+	huffmanNode(char data,int frequency,bool isInternalNode)
 	{
 		left = NULL;
 		right = NULL;
 		
 		this->data = data;
 		this->frequency = frequency;
+		this->isInternalNode = isInternalNode;
 	}	
 
 };

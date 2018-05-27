@@ -9,8 +9,10 @@ class huffmanTree
 {
 
 	public:
-		huffmanTree(multimap<int,char>histogram);
+		huffmanTree(map<char,int>histogram);
 		void buildHuffmanTree();
+		void printNodes(huffmanNode* root);
+		huffmanNode* getRoot();
 
 	private:
 		struct huffmanNode *left, *right,*top;

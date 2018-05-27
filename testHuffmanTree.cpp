@@ -67,7 +67,7 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	ifstream fin;
 	Encoder encode;
 	huffmanNode *root;
-	fin.open("8mb.txt");
+	fin.open("test2.txt");
 
 	if(!fin)
 		return;
@@ -83,7 +83,7 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	
 	root = htree.getRoot();
 	
-	htree.printNodes(root);
+	htree.printNodes(root,"");
 		
 }
 

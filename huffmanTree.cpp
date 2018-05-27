@@ -37,20 +37,17 @@ huffmanNode* huffmanTree::getRoot()
 }
 
 
-void huffmanTree::printNodes(huffmanNode *root)
+void huffmanTree::printNodes(huffmanNode *root, string code)
 {
 	if(root == NULL)
 		return;	
 	
-	cout<< root->data<<" "<<root->frequency<<" ";
+	if(!root->isInternalNode)
+		cout<< root->data<<" "<<root->frequency<<" "<<code<<" \n";
 	
-	if(root->isInternalNode == true)
-		cout<<"Internal node";
-		
-	cout<<endl;
-	printNodes(root->left);
+	printNodes(root->left,code + "0");
 	
-	printNodes(root->right);
+	printNodes(root->right,code + "1");
 	
 	
 }

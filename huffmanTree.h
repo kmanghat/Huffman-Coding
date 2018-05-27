@@ -11,7 +11,7 @@ class huffmanTree
 	public:
 		huffmanTree(map<char,int>histogram);
 		void buildHuffmanTree();
-		void printNodes(huffmanNode* root);
+		void printNodes(huffmanNode* root, string code);
 		huffmanNode* getRoot();
 
 	private:

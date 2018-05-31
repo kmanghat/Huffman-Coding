@@ -11,12 +11,15 @@ class huffmanTree
 	public:
 		huffmanTree(map<char,int>histogram);
 		void buildHuffmanTree();
-		void printNodes(huffmanNode* root, string code);
+		void generateCodes(huffmanNode* root, string code);
 		huffmanNode* getRoot();
+		map<char,char> getHuffmanCodes();
 
 	private:
 		struct huffmanNode *left, *right,*top;
 		priority_queue <huffmanNode*, vector<huffmanNode*>,compare> minHeap;
+		map<char,char> huffmanCodes;
+		int convertToDecimal(string binary);
 };
 
 

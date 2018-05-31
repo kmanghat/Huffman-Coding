@@ -67,7 +67,7 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	ifstream fin;
 	Encoder encode;
 	huffmanNode *root;
-	fin.open("test2.txt");
+	fin.open("test8.txt");
 
 	if(!fin)
 		return;
@@ -83,7 +83,18 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	
 	root = htree.getRoot();
 	
-	htree.printNodes(root,"");
+	htree.generateCodes(root,"");
+	
+	map<char,char> huffmanCodes = htree.getHuffmanCodes();
+	
+	cout<<"\n\n";
+	
+	map<char,char>::iterator it; 
+	
+	for(it = huffmanCodes.begin(); it!= huffmanCodes.end(); it++)
+		cout<<it->first<<" "<<int(it->second)<<endl;
+	
+	
 		
 }
 

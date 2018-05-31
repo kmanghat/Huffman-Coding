@@ -25,7 +25,7 @@ TEST_CASE("Test if create histogram function fills a map")
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test.txt");
+	fin.open("./test_files/test.txt");
 	
 	map<char,int> test;
 	
@@ -40,7 +40,7 @@ TEST_CASE("Test if create histogram function fills correct values for a letter o
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test.txt");
+	fin.open("./test_files/test.txt");
 	
 	if(!fin)
 		return;
@@ -66,7 +66,7 @@ TEST_CASE("Test if create histogram handles spaces")
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test1.txt");
+	fin.open("./test_files/test1.txt");
 	
 	if(!fin)
 		return;
@@ -94,7 +94,7 @@ TEST_CASE("Test if create histogram handles multiple characters")
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test3.txt");
+	fin.open("./test_files/test3.txt");
 	
 	if(!fin)
 		return;
@@ -125,7 +125,7 @@ TEST_CASE("Test if create histogram handles multiple characters with new lines")
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test4.txt");
+	fin.open("./test_files/test4.txt");
 
 	if(!fin)
 		return;
@@ -153,7 +153,7 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test5.txt");
+	fin.open("./test_files/test5.txt");
 
 	if(!fin)
 		return;
@@ -178,7 +178,7 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test6.txt");
+	fin.open("./test_files/test6.txt");
 
 	if(!fin)
 		return;

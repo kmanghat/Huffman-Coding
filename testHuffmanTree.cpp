@@ -15,7 +15,7 @@ TEST_CASE("Test if huffman tree creates a priority queue for a random file")
 {	
 	ifstream fin;
 	Encoder encode;
-	fin.open("test7.txt");
+	fin.open("./test_files/test7.txt");
 
 	if(!fin)
 		return;
@@ -41,7 +41,7 @@ TEST_CASE("Test if huffman tree getRoot function returns root of tree")
 	ifstream fin;
 	Encoder encode;
 	huffmanNode *root;
-	fin.open("test7.txt");
+	fin.open("./test_files/test7.txt");
 
 	if(!fin)
 		return;
@@ -67,7 +67,7 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	ifstream fin;
 	Encoder encode;
 	huffmanNode *root;
-	fin.open("test8.txt");
+	fin.open("./test_files/test8.txt");
 
 	if(!fin)
 		return;

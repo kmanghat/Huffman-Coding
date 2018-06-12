@@ -58,11 +58,24 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 		}
 	}
 	
+	//Left over characters
+	if(temp.size() != 0)
+	{
+		while(temp.size() != 8)
+			temp += '0';
+		
+		string binary = temp.substr(0,7);
+		temp.erase(0,7);
+		buffer = storeInChar(binary);
+		fout<<buffer;
+	}
+
 }  
 
 //Converts string to decimal and returns character representing decimal
 unsigned char Encoder::storeInChar(string binary)
 {
+	reverse(binary.begin(),binary.end());
 	int decimal = 0;
 	for(int i = 0; i < 8; i++)
 	{

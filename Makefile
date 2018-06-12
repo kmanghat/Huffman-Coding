@@ -1,4 +1,4 @@
-SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp
+SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp testEncoder.cpp
 OBJS = $(SOURCE:.cpp=.o)
 
 #GNU C/C++ Compiler

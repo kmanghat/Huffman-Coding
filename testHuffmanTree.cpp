@@ -85,14 +85,14 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	
 	htree.generateCodes(root,"");
 	
-	map<char,char> huffmanCodes = htree.getHuffmanCodes();
+	map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
 	cout<<"\n\n";
 	
-	map<char,char>::iterator it; 
+	map<char,string>::iterator it; 
 	
 	for(it = huffmanCodes.begin(); it!= huffmanCodes.end(); it++)
-		cout<<it->first<<" "<<int(it->second)<<endl;
+		cout<<it->first<<" "<<it->second<<endl;
 	
 	
 		

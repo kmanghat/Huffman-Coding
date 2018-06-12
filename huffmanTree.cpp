@@ -44,9 +44,7 @@ void huffmanTree::generateCodes(huffmanNode *root, string code)
 	
 	if(!root->isInternalNode)
 	{
-		int codeInDecimal = convertToDecimal(code);
-		huffmanCodes[root->data] = char(codeInDecimal);
-		cout<< root->data<<" "<<root->frequency<<" "<<code<<" "<<"\n";
+		huffmanCodes[root->data] = code;
 	}
 	
 	generateCodes(root->left,code + "0");
@@ -56,24 +54,7 @@ void huffmanTree::generateCodes(huffmanNode *root, string code)
 	
 }
 
-int huffmanTree::convertToDecimal(string binary)
-{
-	reverse(binary.begin(),binary.end());
-	int decimal = 0;
-	int size = binary.size();
-	for(int i = 0; i < size; i++)
-	{
-		if(binary[i] == '1')
-		{
-			decimal += pow(2,i);
-		}
-			
-	}
-	
-	return decimal;
-	
-}
-map<char,char> huffmanTree:: getHuffmanCodes()
+map<char,string> huffmanTree:: getHuffmanCodes()
 {
 	return huffmanCodes;
 }

@@ -13,13 +13,12 @@ class huffmanTree
 		void buildHuffmanTree();
 		void generateCodes(huffmanNode* root, string code);
 		huffmanNode* getRoot();
-		map<char,char> getHuffmanCodes();
+		map<char,string> getHuffmanCodes();
 
 	private:
 		struct huffmanNode *left, *right,*top;
 		priority_queue <huffmanNode*, vector<huffmanNode*>,compare> minHeap;
-		map<char,char> huffmanCodes;
-		int convertToDecimal(string binary);
+		map<char,string> huffmanCodes;
 };
 
 

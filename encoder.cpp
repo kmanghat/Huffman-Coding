@@ -42,11 +42,13 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 	//Pass through input file once again
 	//If character is found then look it up in the codes
 	//Store code in buffer
+	bytesRead = 0;
+	bytesWritten = 0;
 	while(!fin.eof())
 	{
 		input = fin.get();
 		temp += huffmanCodes[input];
-		
+		bytesRead++;
 		//If size of string is greater than 8 convert it to 
 		//binary and print to file
 		if(temp.size() >= 8)
@@ -55,6 +57,7 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 			temp.erase(0,7);
 			buffer = storeInChar(binary);
 			fout<<buffer;
+			bytesWritten++;
 		}
 	}
 	
@@ -68,6 +71,7 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 		temp.erase(0,7);
 		buffer = storeInChar(binary);
 		fout<<buffer;
+		bytesWritten++;
 	}
 
 }  
@@ -88,6 +92,49 @@ unsigned char Encoder::storeInChar(string binary)
 	return char(decimal);
 }
 
+void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fout)
+{
+	cout<<"Huffman Encoder pass one"<<endl;
+	cout<<"-------------------------------------"<<endl;
+	
+	cout<<"Read "<<bytesRead<<" bytes from input file, "<<histogram.size()<<" code words found"<<endl;
+	
+	cout<<"\n\n";
+	cout<<"Huffman code table"<<endl;
+	cout<<"-------------------------------------"<<endl;
+	cout<<"ASCII Code"<<setw(30)<<" Huffman Codes"<<endl;
+	map<char,string>::iterator it;
+	
+	char seperator = ' ';
+	for(it = huffmanCodes.begin(); it != huffmanCodes.end(); it++)
+	{
+		if(int(it->first) == -1)
+		{
+			cout<<"EOF "<<"    ( "<<int(it->first)<<" ) ";
+			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+		}
+		else if(int(it->first) == 10)
+		{
+			cout<<"newline "<<"( "<<int(it->first)<<" ) ";
+			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+		}
+		else
+		{
+			cout<<"   "<<it->first<<"    ( "<<int(it->first)<<" )";
+			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+		}
+	
+	}
+	
+	cout<<"\n\n";
+	cout<<"Huffman Encoder Pass two"<<endl;
+	cout<<"--------------------------------------"<<endl;
+	cout<<"Wrote "<<bytesWritten<<" bytes to output file"<<endl;
+	cout<<"--------------------------------------"<<endl;
+	cout<<"Compression ratio is "<<(double(bytesWritten)/double(bytesRead))*100;
+	cout<<" percent"<<endl;
+
+}
 //getter for histogram
 map<char,int> Encoder:: getHistogram()
 {

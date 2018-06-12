@@ -1,5 +1,8 @@
 SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp testEncoder.cpp
+SOURCE2 = encoder.cpp huffmanTree.cpp main.cpp
+
 OBJS = $(SOURCE:.cpp=.o)
+OBJS2 = $(SOURCE2:.cpp=.o)
 
 #GNU C/C++ Compiler
 GCC = g++
@@ -22,16 +25,19 @@ LIBS =
 
 # Targets include all, clean, debug, tar
 
-all : huffman
+all : tests huffman
 
-huffman: $(OBJS)
+huffman:$(OBJS2)
+	$(LINK) -o $@ $^ $(LIBS)
+
+tests: $(OBJS)
 	$(LINK) -o $@ $^ $(LIBS)
 
 clean:
-	rm -rf *.o huffman
+	rm -rf *.o tests huffman
 
 debug: CXXFLAGS = -DDEBUG -g -std=c++11
-debug: huffman
+debug: tests huffman
 
 tar: 
 

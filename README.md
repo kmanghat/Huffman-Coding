@@ -16,7 +16,7 @@ Decoder
 ./huffman -d encodedFile.txt DecodedFile.txt
 
 Sample Files Provided and statistics
-
+-------------------------------------
 simpleOriginal.txt ---> simpleEncoded.txt
 106 bytes               66 bytes
 

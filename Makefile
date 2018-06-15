@@ -1,5 +1,5 @@
-SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp testEncoder.cpp
-SOURCE2 = encoder.cpp huffmanTree.cpp main.cpp
+SOURCE = testMain.cpp encoder.cpp huffmanTree.cpp testHuffmanTree.cpp testEncoder.cpp testDecoder.cpp decoder.cpp
+SOURCE2 = encoder.cpp huffmanTree.cpp main.cpp decoder.cpp
 
 OBJS = $(SOURCE:.cpp=.o)
 OBJS2 = $(SOURCE2:.cpp=.o)

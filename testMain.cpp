@@ -48,16 +48,18 @@ TEST_CASE("Test if create histogram function fills correct values for a letter o
 	map<char,int> compare;
 	map<char,int> test;
 	
-	compare.insert( make_pair(-1,1));
-	compare.insert( make_pair(10,1));
-	compare.insert( make_pair('1',1));
-	compare.insert( make_pair('2',1));
-	compare.insert( make_pair('3',1));
-	compare.insert( make_pair('4',1));
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
+	
+	compare[-1] = 1;
+	compare[10] = 1;
+	compare['1'] = 1;
+	compare['2'] = 1;
+	compare['3'] = 1;
+	compare['4'] = 1;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
-	
 	
 	REQUIRE(compare == test);
 }
@@ -74,13 +76,16 @@ TEST_CASE("Test if create histogram handles spaces")
 	map<char,int>compare;
 	map<char,int> test;
 	
-	compare.insert( make_pair(-1,1));
-	compare.insert( make_pair(10,1));
-	compare.insert( make_pair(' ',1));
-	compare.insert( make_pair('1',1));
-	compare.insert( make_pair('2',1));
-	compare.insert( make_pair('3',1));
-	compare.insert( make_pair('4',1));
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
+	
+	compare[-1] = 1;
+	compare[10] = 1;
+	compare['1'] = 1;
+	compare['2'] = 1;
+	compare['3'] = 1;
+	compare['4'] = 1;
+	compare[' '] = 1;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -102,17 +107,18 @@ TEST_CASE("Test if create histogram handles multiple characters")
 	map<char,int> compare;
 	map<char,int> test;
 	
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
 	
+	compare[-1] = 1;
+	compare[10] = 1;
+	compare['1'] = 5;
+	compare['2'] = 4;
+	compare['3'] = 3;
+	compare['4'] = 2;
+	compare['5'] = 1;
+	compare[' '] = 14;
 	
-	
-	compare.insert( make_pair(-1,1));
-	compare.insert( make_pair(10,1));
-	compare.insert( make_pair('5',1));
-	compare.insert( make_pair('4',2));
-	compare.insert( make_pair('3',3));
-	compare.insert( make_pair('2',4));
-	compare.insert( make_pair('1',5));
-	compare.insert( make_pair(' ',14));
 
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -133,14 +139,15 @@ TEST_CASE("Test if create histogram handles multiple characters with new lines")
 	map<char,int> compare;
 	map<char,int> test;
 	
-	compare.insert( make_pair(-1,1));
-	compare.insert( make_pair('1',1));
-	compare.insert( make_pair('2',1));
-	compare.insert( make_pair('3',1));
-	compare.insert( make_pair('4',1));
-	compare.insert( make_pair(10,4));
-	
-	
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
+		
+	compare[-1] = 1;
+	compare[10] = 4;
+	compare['1'] = 1;
+	compare['2'] = 1;
+	compare['3'] = 1;
+	compare['4'] = 1;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -161,12 +168,20 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 	map<char,int> compare;
 	map<char,int> test;
 	
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
+
 	compare.insert( make_pair(-1,1));
 	compare.insert( make_pair(10,1));
 	compare.insert( make_pair('A',1));
 	compare.insert( make_pair('a',1));
 	compare.insert( make_pair('b',1));
 	
+	compare[-1] = 1;
+	compare[10] = 1;
+	compare['A'] = 1;
+	compare['a'] = 1;
+	compare['b'] = 1;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -186,11 +201,14 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 	map<char,int> compare;
 	map<char,int> test;
 	
-	compare.insert( make_pair(-1,1));
-	compare.insert( make_pair(10,1));
-	compare.insert( make_pair('A',4));
-	compare.insert( make_pair('a',25));
-
+	for(int i = -1; i < 128; i++)
+		compare[i] = 0;
+	
+	compare[-1] = 1;
+	compare[10] = 1;
+	compare['A'] = 4;
+	compare['a'] = 25;
+	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
 	

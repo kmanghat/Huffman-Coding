@@ -6,7 +6,8 @@ huffmanTree::huffmanTree(map<char,int>histogram)
 	
 	for(it = histogram.begin(); it != histogram.end(); it++)
 	{
-		minHeap.push(new huffmanNode(it->first,it->second,false));
+		if(it->second != 0)
+			minHeap.push(new huffmanNode(it->first,it->second,false));
 	}
 	
 }

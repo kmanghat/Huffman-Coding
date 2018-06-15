@@ -27,12 +27,6 @@ TEST_CASE("Test if huffman tree creates a priority queue for a random file")
 	
 	map<char,int>::iterator it;
 	
-	/*
-	for(it = test.begin(); it!= test.end();it++)
-	{
-		cout<<it->first<<" "<<it->second<<endl;
-	}
-	*/
 	huffmanTree htree(test);
 }
 
@@ -87,14 +81,8 @@ TEST_CASE("Test if huffman tree prints correct values(for debugging)")
 	
 	map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
-	cout<<"\n\n";
 	
 	map<char,string>::iterator it; 
 	
-	for(it = huffmanCodes.begin(); it!= huffmanCodes.end(); it++)
-		cout<<it->first<<" "<<it->second<<endl;
-	
-	
-		
 }
 

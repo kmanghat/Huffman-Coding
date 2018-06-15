@@ -6,6 +6,11 @@ void Encoder::createHistogram(ifstream &fin)
 {
 	char input;
 	map<char,int>::iterator it;
+	
+	for(int i = -1; i < 128; i++)
+	{
+		histogram[i] = 0;
+	}
 
 	//read till end of file
 	while(!fin.eof())
@@ -30,9 +35,9 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 {
 	map<char,int>::iterator it;
 	
-	for(it = histogram.begin(); it != histogram.end(); it++)
+	for(int i = -1; i < 128; i++)
 	{
-		fout<<it->first<<" "<<it->second<<endl;
+		fout<<histogram[i]<<endl;
 	}
 	
 	unsigned char buffer;
@@ -80,7 +85,7 @@ void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> 
 unsigned char Encoder::storeInChar(string binary)
 {
 	reverse(binary.begin(),binary.end());
-	int decimal = 0;
+	unsigned int decimal = 0;
 	for(int i = 0; i < 8; i++)
 	{
 		if(binary[i] == '1')
@@ -89,7 +94,8 @@ unsigned char Encoder::storeInChar(string binary)
 		}
 	}
 	
-	return char(decimal);
+	unsigned char character = decimal;
+	return character;
 }
 
 void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fout)
@@ -108,20 +114,23 @@ void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fo
 	char seperator = ' ';
 	for(it = huffmanCodes.begin(); it != huffmanCodes.end(); it++)
 	{
-		if(int(it->first) == -1)
+		if(histogram[it->first] != 0)
 		{
-			cout<<"EOF "<<"    ( "<<int(it->first)<<" ) ";
-			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
-		}
-		else if(int(it->first) == 10)
-		{
-			cout<<"newline "<<"( "<<int(it->first)<<" ) ";
-			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
-		}
-		else
-		{
-			cout<<"   "<<it->first<<"    ( "<<int(it->first)<<" )";
-			cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+			if(int(it->first) == -1)
+			{
+				cout<<"EOF "<<"    ( "<<int(it->first)<<" ) ";
+				cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+			}
+			else if(int(it->first) == 10)
+			{
+				cout<<"newline "<<"( "<<int(it->first)<<" ) ";
+				cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+			}
+			else
+			{
+				cout<<"   "<<it->first<<"    ( "<<int(it->first)<<" )";
+				cout<<right<<setw(20)<<setfill(seperator)<<it->second<<endl;
+			}
 		}
 	
 	}

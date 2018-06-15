@@ -1,5 +1,7 @@
 #include "decoder.h"
 
+Decoder::Decoder(){};
+Decoder::~Decoder(){};
 //Read Histogram From Encoded File
 void Decoder::readHistogram(ifstream &fin)
 {
@@ -93,7 +95,8 @@ void Decoder:: printDecoderInformation()
 {
 	cout<<"Huffman Decoder"<<endl;
 	cout<<"-----------------------------------"<<endl;
-	
-	cout<<"Compression Ratio is "<<double(bytesRead)/double(bytesWritten)*100<<endl;
+	cout<<"Bytes Read "<<bytesRead<<endl;
+	cout<<"Bytes Written "<<bytesWritten<<endl;
+	cout<<"Compression Ratio is "<<double(bytesRead)/double(bytesWritten)*100<<" percent"<<endl;
 	cout<<"-----------------------------------"<<endl;
 }

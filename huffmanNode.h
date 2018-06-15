@@ -7,10 +7,13 @@ using namespace std;
 
 struct huffmanNode
 {
+	//Frequency of letter 
 	int frequency;
 	char data;
+	//Check if internal node
 	bool isInternalNode;
 	
+	//Left and Right Child
 	struct huffmanNode *left;
 	struct huffmanNode *right;
 	

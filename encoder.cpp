@@ -1,7 +1,7 @@
 #include "encoder.h"
 
 Encoder::Encoder(){}
-
+Encoder::~Encoder(){}
 void Encoder::createHistogram(ifstream &fin)
 {
 	char input;
@@ -138,10 +138,11 @@ void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fo
 	cout<<"\n\n";
 	cout<<"Huffman Encoder Pass two"<<endl;
 	cout<<"--------------------------------------"<<endl;
-	cout<<"Wrote "<<bytesWritten<<" bytes to output file"<<endl;
+	cout<<"Wrote "<<bytesWritten<<" bytes to output file excluding histogram at the begining(258 bytes)"<<endl;
 	cout<<"--------------------------------------"<<endl;
 	cout<<"Compression ratio is "<<(double(bytesWritten)/double(bytesRead))*100;
 	cout<<" percent"<<endl;
+	cout<<"--------------------------------------"<<endl;
 
 }
 //getter for histogram

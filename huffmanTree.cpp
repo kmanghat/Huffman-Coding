@@ -3,7 +3,7 @@
 huffmanTree::huffmanTree(map<char,int>histogram)
 {
 	map<char,int>::iterator it;
-	
+	//Store all nodes in a minheap descending order
 	for(it = histogram.begin(); it != histogram.end(); it++)
 	{
 		if(it->second != 0)
@@ -16,12 +16,14 @@ void huffmanTree::buildHuffmanTree()
 {	
 	while(minHeap.size() != 1)
 	{
+		//Construct tree by joining two top nodes
 		left = minHeap.top();
 		minHeap.pop();
 		
 		right = minHeap.top();
 		minHeap.pop();
 		
+		//Push newly created node as internal node into min heap
 		top = new huffmanNode(' ',left->frequency + right->frequency,true);
 		
 		top->left = left;
@@ -40,6 +42,7 @@ huffmanNode* huffmanTree::getRoot()
 
 void huffmanTree::generateCodes(huffmanNode *root, string code)
 {
+	//Pre order traversal generates codes for tree
 	if(root == NULL)
 		return;	
 	

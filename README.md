@@ -17,19 +17,13 @@ Decoder
 
 Sample Files Provided and statistics
 -------------------------------------
-simpleOriginal.txt ---> simpleEncoded.txt
-
-106 bytes               66 bytes
+simpleOriginal.txt (106 bytes) ---> simpleEncoded.txt (66 bytes)
 
 
-50kbOriginal.txt   ---> 50kbEncoded.txt
+50kbOriginal.txt (50,324 bytes)  ---> 50kbEncoded.txt ( 30,977 bytes)
 
-50,324 bytes            30,977 bytes
+1000kbOriginal.txt (1MB) ---> 1000kbOriginal.txt(500kb)
 
-
-1000kbOriginal.txt ---> 1000kbOriginal.txt
-
-1MB                     500kb
 
 All decompressed sizes are without histogram in the begining of file. 
 

@@ -9,19 +9,13 @@ Unit tests are used to minimize bugs and astyle is used to align code.
 
 Usage:
 ------
-Compile:
+Compile:      make
 
-make
+Tests:      ./tests
 
-Tests:
+Encoder:    ./huffman -e originalFile.txt encodedFile.txt
 
-./tests
-
-Encoder
-./huffman -e originalFile.txt encodedFile.txt
-
-Decoder
-./huffman -d encodedFile.txt DecodedFile.txt
+Decoder      ./huffman -d encodedFile.txt DecodedFile.txt
 
 Sample Files Provided and statistics
 -------------------------------------

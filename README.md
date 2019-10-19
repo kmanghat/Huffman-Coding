@@ -24,7 +24,7 @@ simpleOriginal.txt (106 bytes) ---> simpleEncoded.txt (66 bytes)
 
 50kbOriginal.txt (50,324 bytes)  ---> 50kbEncoded.txt ( 30,977 bytes)
 
-1000kbOriginal.txt (1kb) ---> 1000kbOriginal.txt(500 bytes)
+1000kbOriginal.txt (1mb) ---> 1000kbOriginal.txt(500 bytes)
 
 
 All decompressed sizes are without histogram in the begining of file. 

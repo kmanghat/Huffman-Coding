@@ -32,4 +32,10 @@ All decompressed sizes are without histogram in the begining of file.
 Size of Histogram is 258 bytes.
 
 
+TO DO
+-----------------------------------------------------------
+- Make a better test plan and implement it
+- This project was done about in 2017 so there is probably a lot 
+of things I learned since then I could use to make this better.
+
 

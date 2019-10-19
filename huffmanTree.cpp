@@ -1,8 +1,8 @@
 #include "huffmanTree.h"
 
-huffmanTree::huffmanTree(map<char,int>histogram)
+huffmanTree::huffmanTree(unordered_map<char,int>histogram)
 {
-	map<char,int>::iterator it;
+	unordered_map<char,int>::iterator it;
 	//Store all nodes in a minheap descending order
 	for(it = histogram.begin(); it != histogram.end(); it++)
 	{
@@ -58,7 +58,7 @@ void huffmanTree::generateCodes(huffmanNode *root, string code)
 	
 }
 
-map<char,string> huffmanTree:: getHuffmanCodes()
+unordered_map<char,string> huffmanTree:: getHuffmanCodes()
 {
 	return huffmanCodes;
 }

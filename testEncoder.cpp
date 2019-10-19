@@ -14,7 +14,7 @@ TEST_CASE("Test if encoder prints to text file")
 	if(!fin)
 		return;
 	
-	map<char,int> test;
+	unordered_map<char,int> test;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -27,7 +27,7 @@ TEST_CASE("Test if encoder prints to text file")
 	
 	htree.generateCodes(root,"");
 	
-	map<char,string> huffmanCodes = htree.getHuffmanCodes();
+	unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
 	ofstream fout;
 	fout.open("out.txt");

@@ -9,16 +9,16 @@ class huffmanTree
 {
 
 	public:
-		huffmanTree(map<char,int>histogram);
+		huffmanTree(unordered_map<char,int>histogram);
 		void buildHuffmanTree();
 		void generateCodes(huffmanNode* root, string code);
 		huffmanNode* getRoot();
-		map<char,string> getHuffmanCodes();
+		unordered_map<char,string> getHuffmanCodes();
 
 	private:
 		struct huffmanNode *left, *right,*top;
 		priority_queue <huffmanNode*, vector<huffmanNode*>,compare> minHeap;
-		map<char,string> huffmanCodes;
+		unordered_map<char,string> huffmanCodes;
 };
 
 

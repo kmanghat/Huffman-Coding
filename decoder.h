@@ -12,9 +12,9 @@ public:
 	//Read histogram from encoded file
 	void readHistogram(ifstream &fin);
 	//Getter for histogram
-	map<char,int> getHistogram();
+	unordered_map<char,int> getHistogram();
 	//Setter for huffman codes
-	void setCodes(map<char,string> codes);
+	void setCodes(unordered_map<char,string> codes);
 	//Generate Decoded File
 	void generateDecodedFile(ifstream &fin, ofstream &fout);
 	//Print Decoder information
@@ -22,9 +22,9 @@ public:
 	
 private:
 	//Histogram of characters
-	map<char,int> histogram;
+	unordered_map<char,int> histogram;
 	//Huffman Codes
-	map<string,char> huffmanCodes;
+	unordered_map<string,char> huffmanCodes;
 	//Bytes read and written
 	long long int bytesRead = 0;
 	long long int bytesWritten = 0;

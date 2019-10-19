@@ -15,15 +15,15 @@ void Decoder::readHistogram(ifstream &fin)
 }
 
 //getter for histogram
-map<char,int> Decoder::getHistogram()
+unordered_map<char,int> Decoder::getHistogram()
 {
 	return histogram;
 }
 
 //Setter for huffman codes
-void Decoder::setCodes(map<char,string> codes)
+void Decoder::setCodes(unordered_map<char,string> codes)
 {
-	map<char,string>::iterator it;
+	unordered_map<char,string>::iterator it;
 	
 	for(it = codes.begin(); it != codes.end(); it++)
 	{

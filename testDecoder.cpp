@@ -27,7 +27,7 @@ TEST_CASE("Create huffman tree using histogram")
 	fin.open("out.txt");
 	
 	decode.readHistogram(fin);
-	map<char,int> histogram = decode.getHistogram();
+	unordered_map<char,int> histogram = decode.getHistogram();
 	
 	huffmanTree hTree(histogram);
 }
@@ -39,7 +39,7 @@ TEST_CASE("Generate huffman codes for decoder")
 	fin.open("out.txt");
 	
 	decode.readHistogram(fin);
-	map<char,int> histogram = decode.getHistogram();
+	unordered_map<char,int> histogram = decode.getHistogram();
 	
 	huffmanTree htree(histogram);
 	
@@ -49,9 +49,9 @@ TEST_CASE("Generate huffman codes for decoder")
 	
 	htree.generateCodes(root,"");
 	
-	map<char,string> huffmanCodes = htree.getHuffmanCodes();
+	unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
-	map<char,string> compare;
+	unordered_map<char,string> compare;
 	
 	compare[-1] = "1010";
 	compare[10] = "1100";
@@ -75,7 +75,7 @@ TEST_CASE("Get codes from huffman tree")
 	fin.open("out.txt");
 	
 	decode.readHistogram(fin);
-	map<char,int> histogram = decode.getHistogram();
+	unordered_map<char,int> histogram = decode.getHistogram();
 	
 	huffmanTree htree(histogram);
 	
@@ -85,7 +85,7 @@ TEST_CASE("Get codes from huffman tree")
 	
 	htree.generateCodes(root,"");
 	
-	map<char,string> huffmanCodes = htree.getHuffmanCodes();
+	unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
 	decode.setCodes(huffmanCodes);
 	
@@ -98,7 +98,7 @@ TEST_CASE("Generate decoded file")
 	fin.open("out3.txt");
 	
 	decode.readHistogram(fin);
-	map<char,int> histogram = decode.getHistogram();
+	unordered_map<char,int> histogram = decode.getHistogram();
 	
 	huffmanTree htree(histogram);
 	htree.buildHuffmanTree();
@@ -106,7 +106,7 @@ TEST_CASE("Generate decoded file")
 	
 	htree.generateCodes(root,"");
 	
-	map<char,string> huffmanCodes = htree.getHuffmanCodes();
+	unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 	
 	decode.setCodes(huffmanCodes);
 	

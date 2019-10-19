@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 			exit(4);
 		}
 	
-		map<char,int> test;
+		unordered_map<char,int> test;
 		
 		//Create histogram characters to corresponding occurences
 		encode.createHistogram(fin);
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 		htree.generateCodes(root,"");
 		
 		//get codes
-		map<char,string> huffmanCodes = htree.getHuffmanCodes();
+		unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 		
 		//Print codes to encoded file
 		ofstream fout;
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
 		
 		//Create Histogram
 		decode.readHistogram(fin);
-		map<char,int> histogram = decode.getHistogram();
+		unordered_map<char,int> histogram = decode.getHistogram();
 		
 		//Build tree
 		huffmanTree htree(histogram);
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
 		htree.generateCodes(root,"");
 		
 		//Get codes
-		map<char,string> huffmanCodes = htree.getHuffmanCodes();
+		unordered_map<char,string> huffmanCodes = htree.getHuffmanCodes();
 		
 		//Give decoder codes
 		decode.setCodes(huffmanCodes);

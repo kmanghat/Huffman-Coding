@@ -7,7 +7,7 @@ using namespace std;
 
 TEST_CASE("Test huffmanTree class")
 {	
-	map<char,int> test;
+	unordered_map<char,int> test;
 	huffmanTree htree(test);
 }
 
@@ -20,7 +20,7 @@ TEST_CASE("Test if huffman tree creates a priority queue for a random file")
 	if(!fin)
 		return;
 	
-	map<char,int> test;
+	unordered_map<char,int> test;
 
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -40,7 +40,7 @@ TEST_CASE("Test if huffman tree getRoot function returns root of tree")
 	if(!fin)
 		return;
 	
-	map<char,int> test;
+	unordered_map<char,int> test;
 
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -52,37 +52,6 @@ TEST_CASE("Test if huffman tree getRoot function returns root of tree")
 	root = htree.getRoot();
 	
 	REQUIRE((root->data == ' ' && root->frequency == 3738 && root->isInternalNode == true));
-	
-}
-
-
-TEST_CASE("Test if huffman tree prints correct values(for debugging)")
-{	
-	ifstream fin;
-	Encoder encode;
-	huffmanNode *root;
-	fin.open("./test_files/test8.txt");
-
-	if(!fin)
-		return;
-	
-	map<char,int> test;
-
-	encode.createHistogram(fin);
-	test = encode.getHistogram();
-	
-	huffmanTree htree(test);
-	
-	htree.buildHuffmanTree();
-	
-	root = htree.getRoot();
-	
-	htree.generateCodes(root,"");
-	
-	map<char,string> huffmanCodes = htree.getHuffmanCodes();
-	
-	
-	map<char,string>::iterator it; 
 	
 }
 

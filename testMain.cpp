@@ -2,6 +2,7 @@
 #include "catch.hpp"
 #include "encoder.h"
 #include <fstream>
+#include <unordered_map>
 using namespace std;
 
 
@@ -13,7 +14,7 @@ TEST_CASE("Test for encoder interface")
 TEST_CASE("Test for getHistogram function")
 {	
 	Encoder encode;
-	map<char,int> test;
+	unordered_map<char,int> test;
 	
 	test = encode.getHistogram();
 	
@@ -27,7 +28,7 @@ TEST_CASE("Test if create histogram function fills a map")
 	Encoder encode;
 	fin.open("./test_files/test.txt");
 	
-	map<char,int> test;
+	unordered_map<char,int> test;
 	
 	encode.createHistogram(fin);
 	test = encode.getHistogram();
@@ -45,8 +46,8 @@ TEST_CASE("Test if create histogram function fills correct values for a letter o
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	unordered_map<char,int> compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;
@@ -73,8 +74,8 @@ TEST_CASE("Test if create histogram handles spaces")
 	if(!fin)
 		return;
 	
-	map<char,int>compare;
-	map<char,int> test;
+	unordered_map<char,int>compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;
@@ -104,8 +105,8 @@ TEST_CASE("Test if create histogram handles multiple characters")
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	unordered_map<char,int>compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;
@@ -136,8 +137,8 @@ TEST_CASE("Test if create histogram handles multiple characters with new lines")
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	unordered_map<char,int>compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;
@@ -165,8 +166,8 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	unordered_map<char,int>compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;
@@ -198,8 +199,8 @@ TEST_CASE("Test if create histogram handles multiple characters and capital lett
 	if(!fin)
 		return;
 	
-	map<char,int> compare;
-	map<char,int> test;
+	unordered_map<char,int>compare;
+	unordered_map<char,int> test;
 	
 	for(int i = -1; i < 128; i++)
 		compare[i] = 0;

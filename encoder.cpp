@@ -5,7 +5,7 @@ Encoder::~Encoder(){}
 void Encoder::createHistogram(ifstream &fin)
 {
 	char input;
-	map<char,int>::iterator it;
+	unordered_map<char,int>::iterator it;
 	
 	for(int i = -1; i < 128; i++)
 	{
@@ -31,9 +31,9 @@ void Encoder::createHistogram(ifstream &fin)
 	}
 }
 
-void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, map<char,string> huffmanCodes)
+void Encoder::createEncodedFile(ifstream &fin, ofstream &fout, unordered_map<char,string> huffmanCodes)
 {
-	map<char,int>::iterator it;
+	unordered_map<char,int>::iterator it;
 	
 	for(int i = -1; i < 128; i++)
 	{
@@ -98,7 +98,7 @@ unsigned char Encoder::storeInChar(string binary)
 	return character;
 }
 
-void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fout)
+void Encoder::printEncoderInformation(unordered_map<char,string> huffmanCodes,ofstream &fout)
 {
 	cout<<"Huffman Encoder pass one"<<endl;
 	cout<<"-------------------------------------"<<endl;
@@ -109,7 +109,7 @@ void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fo
 	cout<<"Huffman code table"<<endl;
 	cout<<"-------------------------------------"<<endl;
 	cout<<"ASCII Code"<<setw(30)<<" Huffman Codes"<<endl;
-	map<char,string>::iterator it;
+	unordered_map<char,string>::iterator it;
 	
 	char seperator = ' ';
 	for(it = huffmanCodes.begin(); it != huffmanCodes.end(); it++)
@@ -146,7 +146,7 @@ void Encoder::printEncoderInformation(map<char,string> huffmanCodes,ofstream &fo
 
 }
 //getter for histogram
-map<char,int> Encoder:: getHistogram()
+unordered_map<char,int> Encoder:: getHistogram()
 {
 	return histogram;
 }
